@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Purchases</string>
+    <string name="start">Приступить</string>
+    <string name="add_purchase">Добавить</string>
+    <string-array name="purchases">
+        <item>"Авокадо"</item>
+        <item>"Бананы"</item>
+        <item>"Лимоны"</item>
+        <item>"Киви"</item>
+        <item>"Шоколад"</item>
+        <item>"Сыр"</item>
+        <item>"Авокадо"</item>
+        <item>"Бананы"</item>
+        <item>"Лимоны"</item>
+        <item>"Киви"</item>
+        <item>"Шоколад"</item>
+        <item>"Сыр"</item>
+    </string-array>
+</resources>
