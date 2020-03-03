@@ -2,6 +2,7 @@
     <string name="app_name">Purchases</string>
     <string name="start">Приступить</string>
     <string name="add_purchase">Добавить</string>
+    <string name="remove">Удалить</string>
     <string-array name="purchases">
         <item>"Авокадо"</item>
         <item>"Бананы"</item>
