@@ -30,7 +30,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        purch.add("№ 1");
+        purch.add("Авокадо");
+        purch.add("Арбуз");
+        purch.add("Банан");
+        purch.add("Киви");
+        purch.add("Апельсин");
+        purch.add("Ананас");
 
         final ArrayList<String> selectedCell = new ArrayList();
 
