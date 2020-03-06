@@ -3,6 +3,10 @@
 
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativelayout"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
@@ -13,44 +17,63 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="@color/main" />
+        android:background="@color/white" />
+
+    <ImageButton
+        android:id="@+id/remove"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/delete_32"
+        android:background="@color/white" />
 
     <ListView
         android:id="@+id/listview"
         android:layout_width="match_parent"
-        android:layout_height="819dp"
+        android:layout_height="473dp"
         android:layout_below="@+id/text"
-        android:layout_marginBottom="50dp"
         android:background="@color/white"
-        android:choiceMode="multipleChoice">
+        android:choiceMode="multipleChoice" />
 
-    </ListView>
 
-    <Button
+    <ImageButton
         android:id="@+id/addPurchase"
-        android:background="@color/main"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_below="@id/imageView"
         android:layout_alignParentRight="true"
-        android:text="+"
-        android:textSize="60dp"
-        android:textColor="@color/white"/>
-
-    <Button
-        android:id="@+id/remove"
-        android:layout_width="84dp"
-        android:layout_height="84dp"
-        android:background="@color/white"
-        android:drawableBottom="@drawable/delete_64"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"/>
+        android:src="@drawable/plus_32"
+        android:background="@color/white" />
 
     <EditText
         android:id="@+id/text"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        tools:text="Write here"
-        android:layout_below="@+id/imageView"/>
+        android:layout_below="@+id/imageView"
+        android:layout_marginTop="64dp"
+        android:hint="@string/write_here"
+        android:lineSpacingExtra="0dp"
+        android:background="@android:color/transparent"
+        android:singleLine="false" />
+
+    <TextView
+        android:id="@+id/shop_list_name"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_below="@id/imageView"
+        android:gravity="bottom"
+        android:text="@string/shopping_list"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:text="@string/you_chose"
+        android:textSize="23sp"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"/>
 
 
 </RelativeLayout>

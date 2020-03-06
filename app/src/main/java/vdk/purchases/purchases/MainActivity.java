@@ -3,11 +3,14 @@ package vdk.purchases.purchases;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.view.View;
 import android.widget.EditText;
@@ -17,12 +20,6 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     ArrayList<String> purch = new ArrayList();
-    ArrayAdapter<String> adapter;
-
-    ArrayList<String> selectedPhones = new ArrayList();
-    ListView phonesList;
-    private MainActivity arrayAdapter;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,6 +34,15 @@ public class MainActivity extends AppCompatActivity {
         purch.add("Апельсин");
         purch.add("Ананас");
 
+        findViewById(R.id.relativelayout).setOnTouchListener(new View.OnTouchListener(){
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                return true;
+            }
+        });
+
         final ArrayList<String> selectedCell = new ArrayList();
 
         //___убираем полоску состояния___
@@ -50,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
         //адаптер для связи элементов списков с источниками данных
-        final ArrayAdapter adapter = new ArrayAdapter<String>(
+        final ArrayAdapter adapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_multiple_choice, purch);
         listView.setAdapter(adapter);
@@ -71,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        Button add = (Button) findViewById(R.id.addPurchase);
+        ImageButton add = (ImageButton) findViewById(R.id.addPurchase);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button remove = (Button) findViewById(R.id.remove);
+        ImageButton remove = (ImageButton) findViewById(R.id.remove);
         remove.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View w){

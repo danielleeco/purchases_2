@@ -12,15 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/main_background" />
+        android:src="@drawable/splash_screen" />
 
-    <ImageView
-        android:id="@+id/main_shopping_bag"
-        android:layout_width="282dp"
-        android:layout_height="417dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp"
-        android:src="@drawable/main_shopping_bag" />
+
 
     <RelativeLayout
         android:id="@+id/startLayout"
