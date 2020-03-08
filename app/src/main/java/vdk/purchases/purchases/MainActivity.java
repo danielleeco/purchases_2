@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,6 +17,8 @@ import android.widget.ListView;
 import android.view.View;
 import android.widget.EditText;
 import java.util.ArrayList;
+
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -33,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         purch.add("Киви");
         purch.add("Апельсин");
         purch.add("Ананас");
+
 
         findViewById(R.id.relativelayout).setOnTouchListener(new View.OnTouchListener(){
             @Override
@@ -61,23 +66,33 @@ public class MainActivity extends AppCompatActivity {
                 android.R.layout.simple_list_item_multiple_choice, purch);
         listView.setAdapter(adapter);
 
+        final TextView total_text = findViewById(R.id.total);
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 // получаем нажатый элемент
                 String cell = (String) adapter.getItem(position);
-                if (listView.isItemChecked(position) == true) {
+                if (listView.isItemChecked(position)) {
                     selectedCell.add(cell);
-                    System.out.println("JH");
                 } else {
                     selectedCell.remove(cell);
                 }
+                total_text.setText("You chose: " + selectedCell.size() + " items");
             }
 
         });
 
-        ImageButton add = (ImageButton) findViewById(R.id.addPurchase);
+
+
+
+
+        final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
+        final Animation animScale = AnimationUtils.loadAnimation(this, R.anim.scale);
+        final Animation animRotate = AnimationUtils.loadAnimation(this, R.anim.rotate);
+
+        ImageButton add = findViewById(R.id.addPurchase);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,14 +102,16 @@ public class MainActivity extends AppCompatActivity {
                     adapter.add(txt);
                     CellEditText.setText("");
                     adapter.notifyDataSetChanged();
+                    v.startAnimation(animRotate);
+
                 }
             }
         });
 
-        ImageButton remove = (ImageButton) findViewById(R.id.remove);
+        ImageButton remove = findViewById(R.id.remove);
         remove.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View w){
+            public void onClick(View v){
                 // получаем и удаляем выделенные элементы
                 for (int i = 0; i < selectedCell.size(); i++) {
                     adapter.remove(selectedCell.get(i));
@@ -104,8 +121,12 @@ public class MainActivity extends AppCompatActivity {
                 // очищаем массив выбраных объектов
                 selectedCell.clear();
                 adapter.notifyDataSetChanged();
+                total_text.setText("You chose: " + selectedCell.size() + " items");
+                v.startAnimation(animAlpha);
                 }
         });
+
+
     }
 }
 
