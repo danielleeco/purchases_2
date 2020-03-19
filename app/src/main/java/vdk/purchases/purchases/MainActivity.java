@@ -2,7 +2,11 @@ package vdk.purchases.purchases;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
@@ -17,6 +21,7 @@ import android.widget.ListView;
 import android.view.View;
 import android.widget.EditText;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,18 +30,29 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayList<String> purch = new ArrayList();
 
+    DBHelper dbHelper;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        dbHelper = new DBHelper(this);
+        final SQLiteDatabase database=dbHelper.getWritableDatabase();
 
-        purch.add("Авокадо");
-        purch.add("Арбуз");
-        purch.add("Банан");
-        purch.add("Киви");
-        purch.add("Апельсин");
-        purch.add("Ананас");
+
+        Cursor cursor= database.query(DBHelper.Table, null,null,null,null,null,null);
+
+        if (cursor.moveToFirst()){
+            int nameIndex = cursor.getColumnIndex(DBHelper.Name);
+            do{
+                purch.add(cursor.getString(nameIndex));
+            } while(cursor.moveToNext());
+            Collections.reverse(purch);
+        }
+        else {
+            Log.d("mLog","0");
+        }
 
 
         findViewById(R.id.relativelayout).setOnTouchListener(new View.OnTouchListener(){
@@ -67,9 +83,7 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
 
         final TextView total_text = findViewById(R.id.total);
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 // получаем нажатый элемент
@@ -85,25 +99,30 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
-
-
         final Animation animAlpha = AnimationUtils.loadAnimation(this, R.anim.alpha);
-        final Animation animScale = AnimationUtils.loadAnimation(this, R.anim.scale);
+       // final Animation animScale = AnimationUtils.loadAnimation(this, R.anim.scale);
         final Animation animRotate = AnimationUtils.loadAnimation(this, R.anim.rotate);
 
         ImageButton add = findViewById(R.id.addPurchase);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ContentValues contentValues= new ContentValues();
                 EditText CellEditText = findViewById(R.id.text);
                 String txt = CellEditText.getText().toString();
-                if (!txt.isEmpty() && purch.contains(txt) == false) {
-                    adapter.add(txt);
+
+                //database.delete(DBHelper.Table, null, null);
+                if (!txt.isEmpty() && !purch.contains(txt)) {
+                    contentValues.put(DBHelper.Name, txt);
+                    database.insert(DBHelper.Table, null, contentValues);
+                    adapter.insert(txt,0);
+                    //или
+                    //purch.add(0, txt);
+                    //listView.setAdapter(adapter);
+
                     CellEditText.setText("");
                     adapter.notifyDataSetChanged();
                     v.startAnimation(animRotate);
-
                 }
             }
         });
