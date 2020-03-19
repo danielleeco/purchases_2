@@ -38,21 +38,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         dbHelper = new DBHelper(this);
-        final SQLiteDatabase database=dbHelper.getWritableDatabase();
-
-
-        Cursor cursor= database.query(DBHelper.Table, null,null,null,null,null,null);
-
-        if (cursor.moveToFirst()){
-            int nameIndex = cursor.getColumnIndex(DBHelper.Name);
-            do{
-                purch.add(cursor.getString(nameIndex));
-            } while(cursor.moveToNext());
-            Collections.reverse(purch);
-        }
-        else {
-            Log.d("mLog","0");
-        }
+        purch=dbHelper.OnLoad(); //Заполняем список покупок из базы
 
 
         findViewById(R.id.relativelayout).setOnTouchListener(new View.OnTouchListener(){
@@ -107,22 +93,19 @@ public class MainActivity extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ContentValues contentValues= new ContentValues();
                 EditText CellEditText = findViewById(R.id.text);
                 String txt = CellEditText.getText().toString();
-
                 //database.delete(DBHelper.Table, null, null);
                 if (!txt.isEmpty() && !purch.contains(txt)) {
-                    contentValues.put(DBHelper.Name, txt);
-                    database.insert(DBHelper.Table, null, contentValues);
-                    adapter.insert(txt,0);
+                    dbHelper.add(txt);//добавление в бд покупки
+                    adapter.insert(txt, 0);
                     //или
                     //purch.add(0, txt);
                     //listView.setAdapter(adapter);
-
                     CellEditText.setText("");
                     adapter.notifyDataSetChanged();
                     v.startAnimation(animRotate);
+
                 }
             }
         });
@@ -134,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
                 // получаем и удаляем выделенные элементы
                 for (int i = 0; i < selectedCell.size(); i++) {
                     adapter.remove(selectedCell.get(i));
+                    dbHelper.delete(selectedCell.get(i));//удаление из бд покупки
                 }
                 // снимаем все ранее установленные отметки
                 listView.clearChoices();
