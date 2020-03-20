@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class DBHelper extends SQLiteOpenHelper {
 
@@ -41,24 +42,32 @@ public class DBHelper extends SQLiteOpenHelper {
     }
     public  void delete(String txt){
         //удаление элемента с таким-то именем
+//        SQLiteDatabase database=getWritableDatabase();
+////       // txt="'"+txt+"'";//без этого не работает
+////        database.delete(Table, Name+ "='" + txt+"'", null);
+////        database.close();
         SQLiteDatabase database=getWritableDatabase();
-        txt="'"+txt+"'";//без этого не работает
-        database.delete(Table, Name+ "=" + txt, null);
+        // txt="'"+txt+"'";//без этого не работает
+        database.delete(Table, Name+ "=:txt", new String[]{txt});
         database.close();
     }
+
     public ArrayList<String> OnLoad(){
         ArrayList<String> purch = new ArrayList();
         final SQLiteDatabase database=getWritableDatabase();
         Cursor cursor= database.query(DBHelper.Table, null,null,null,null,null,null);
         if (cursor.moveToFirst()){
             int nameIndex = cursor.getColumnIndex(DBHelper.Name);
+            int idIndex = cursor.getColumnIndex(DBHelper.ID);
             do{
                 purch.add(cursor.getString(nameIndex)); //проходит построчно и добавляет новые покупки
+                System.out.println(cursor.getString(idIndex)+ " " + cursor.getString(nameIndex));
             } while(cursor.moveToNext());
         }
         else {
             Log.d("mLog","0"); //если ничего нет в консоль пишет 0
         }
+        Collections.reverse(purch);
         database.close();
         return purch;
     }
