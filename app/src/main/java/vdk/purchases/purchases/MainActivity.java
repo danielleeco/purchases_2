@@ -2,6 +2,7 @@ package vdk.purchases.purchases;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -22,7 +23,6 @@ import android.view.View;
 import android.widget.EditText;
 import java.util.ArrayList;
 import java.util.Collections;
-
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +39,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         dbHelper = new DBHelper(this);
         purch=dbHelper.OnLoad(); //Заполняем список покупок из базы
+
+        final Dialog dialog = new Dialog(MainActivity.this);
+
+        dialog.setTitle("Заголовок");
+        dialog.setContentView(R.layout.edit_dialog);
+        TextView text =(TextView) dialog.findViewById(R.id.heading);
+        text.setText("Этот текст");
 
 
         findViewById(R.id.relativelayout).setOnTouchListener(new View.OnTouchListener(){
@@ -82,6 +89,15 @@ public class MainActivity extends AppCompatActivity {
                 total_text.setText("You chose: " + selectedCell.size() + " items");
             }
 
+        });
+
+        // обработчик долгого нажатия
+        listView.setOnItemLongClickListener (new AdapterView.OnItemLongClickListener() {
+            public boolean onItemLongClick(AdapterView parent, View view, int position, long id) {
+                System.out.println("long press");
+                dialog.show();
+                return true;
+            }
         });
 
 
