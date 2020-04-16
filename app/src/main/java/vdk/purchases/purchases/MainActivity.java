@@ -1,14 +1,9 @@
 package vdk.purchases.purchases;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Dialog;
-import android.content.ContentValues;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -17,17 +12,16 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.view.View;
-import android.widget.EditText;
-import java.util.ArrayList;
-import java.util.Collections;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-
     ArrayList<String> purch = new ArrayList();
 
     DBHelper dbHelper;
@@ -38,15 +32,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         dbHelper = new DBHelper(this);
-        purch=dbHelper.OnLoad(); //Заполняем список покупок из базы
+        purch = dbHelper.OnLoad(); //Заполняем список покупок из базы
 
         final Dialog dialog = new Dialog(MainActivity.this);
 
-        dialog.setTitle("Заголовок");
+        dialog.setTitle("Editing");
         dialog.setContentView(R.layout.edit_dialog);
-        TextView text =(TextView) dialog.findViewById(R.id.heading);
-        text.setText("Этот текст");
-
+        TextView heading = (TextView) dialog.findViewById(R.id.heading);
+        //heading.setText("You can edit here");
+        final EditText edit_text = (EditText) dialog.findViewById(R.id.edit_text);
+        final Button dialog_done = (Button) dialog.findViewById(R.id.dialog_done);
 
         findViewById(R.id.relativelayout).setOnTouchListener(new View.OnTouchListener(){
             @Override
@@ -91,11 +86,20 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        // обработчик долгого нажатия
+
+        // обработчик долгого нажатия и редактирования
         listView.setOnItemLongClickListener (new AdapterView.OnItemLongClickListener() {
-            public boolean onItemLongClick(AdapterView parent, View view, int position, long id) {
-                System.out.println("long press");
+            public boolean onItemLongClick(AdapterView parent, View view, final int position, long id) {
                 dialog.show();
+                final String text_to_edit = (String) adapter.getItem(position);
+                edit_text.setText(text_to_edit);
+                dialog_done.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+                        purch.set(position, edit_text.getText().toString());
+                        adapter.notifyDataSetChanged();
+                        dbHelper.updateByName(text_to_edit, edit_text.getText().toString());
+                    }
+                });
                 return true;
             }
         });

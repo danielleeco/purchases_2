@@ -52,6 +52,15 @@ public class DBHelper extends SQLiteOpenHelper {
         database.close();
     }
 
+    public  void updateByName(String name1, String name){
+
+        SQLiteDatabase database=getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DBHelper.Name, name);
+        database.update(Table, contentValues,Name + "=?", new String[]{name1});
+        database.close();
+    }
+
     public ArrayList<String> OnLoad(){
         ArrayList<String> purch = new ArrayList();
         final SQLiteDatabase database=getWritableDatabase();
