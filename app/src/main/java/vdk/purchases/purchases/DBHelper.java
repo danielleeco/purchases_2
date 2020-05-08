@@ -78,7 +78,6 @@ public class DBHelper extends SQLiteOpenHelper {
         else {
             Log.d("mLog","0"); //если ничего нет в консоль пишет 0
         }
-        Collections.reverse(purch);
         database.close();
         return purch;
     }

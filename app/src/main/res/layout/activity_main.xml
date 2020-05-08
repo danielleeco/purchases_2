@@ -19,16 +19,6 @@
         android:layout_height="80dp"
         android:background="@color/white" />
 
-    <ImageButton
-        android:id="@+id/remove"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_marginEnd="15dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:src="@drawable/delete_32"
-        android:background="@color/white" />
-
     <ListView
         android:id="@+id/listview"
         android:layout_width="match_parent"
@@ -36,7 +26,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="15dp"
         android:layout_below="@+id/text"
-        android:layout_marginBottom="300dp"
+        android:layout_marginBottom="250dp"
         android:background="@color/white"
         android:choiceMode="multipleChoice" />
 
@@ -47,8 +37,8 @@
         android:layout_height="match_parent"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="15dp"
-        android:layout_marginTop="450dp"
-        android:layout_above="@+id/remove"
+        android:layout_marginTop="550dp"
+        android:layout_above="@+id/total"
         android:layout_marginBottom="0dp"
         android:choiceMode="multipleChoice" />
 
@@ -91,10 +81,10 @@
     <TextView
         android:id="@+id/total"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="79dp"
+        android:layout_marginEnd="20dp"
         android:layout_width="match_parent"
         android:layout_height="64dp"
-        android:text="@string/you_chose"
+        android:text="@string/left_to_buy"
         android:textSize="23sp"
         android:gravity="center"
         android:layout_alignParentBottom="true"/>

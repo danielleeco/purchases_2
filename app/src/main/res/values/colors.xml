@@ -10,4 +10,5 @@
     <color name="main">#736CCE</color>
     <color name="grey">#919197</color>
     <color name="darken">#444547</color>
+    <color name="lighter">#E8EAEC</color>
 </resources>

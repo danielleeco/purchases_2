@@ -111,12 +111,12 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     selectedCell.remove(cell);
                 }
-                adapter.notifyDataSetChanged();
-                adapter_done.notifyDataSetChanged();
                 dbHelper.delete(cell, "table_purch");
+                dbHelper.add(cell, "table_purch2");
                 purch.remove(cell);
                 purch_done.add(cell);
-                dbHelper.add(cell, "table_purch2");
+                adapter.notifyDataSetChanged();
+                adapter_done.notifyDataSetChanged();
                 System.out.println(purch_done);
                 total_text.setText("left to buy: " + purch.size() + " items");
             }

@@ -5,7 +5,7 @@
     <string name="remove">Удалить</string>
     <string name="shopping_list">  Shopping List</string>
     <string name="write_here">   Write here</string>
-    <string name="you_chose">You chose:</string>
+    <string name="left_to_buy">left to buy:</string>
     <string-array name="purchases">
         <item>"Авокадо"</item>
         <item>"Бананы"</item>

@@ -3,9 +3,13 @@ package vdk.purchases.purchases;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class Main2Activity extends AppCompatActivity {
     //переход на mainactivity
@@ -15,7 +19,9 @@ public class Main2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        btn=(Button)findViewById(R.id.button);
+        Window w = getWindow();
+        w.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        ImageButton btn = findViewById(R.id.button);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -23,5 +29,12 @@ public class Main2Activity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        btn.getBackground().setAlpha(0);
+        ImageButton share = findViewById(R.id.share);
+        share.getBackground().setAlpha(0);
+        ImageButton profile = findViewById(R.id.profile);
+        profile.getBackground().setAlpha(0);
+        ImageButton setup = findViewById(R.id.setup);
+        setup.getBackground().setAlpha(0);
     }
 }
