@@ -12,10 +12,10 @@ import java.util.Collections;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public static final int Database_VERSION=1; //версия дб
-    public static final String Database_name="list_puchases"; //имя дб
-    public static final String Table = "table_purch"; //название таблицы с именами
-
+    public static final int Database_VERSION=2; //версия дб
+    public static final String Database_name="new_db"; //имя дб
+    public static final String Table = "table_purch";
+    public static final String Table2 = "table_purch2"; //название таблицы с именами
     public static final String ID="_id"; //столбец id таблицы table_purch
     public static final String Name="name";//столбец name таблицы table_purch
 
@@ -25,14 +25,15 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + Table + "(" + ID + " integer primary key," + Name + " text" + ")"); //при создании бд создается талица
+        db.execSQL("create table " + Table + "(" + ID + " integer primary key," + Name + " text" + ")");
+        db.execSQL("create table " + Table2 + "(" + ID + " integer primary key," + Name + " text" + ")"); //при создании бд создается талица
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
-    public void add(String txt){
+    public void add(String txt, String Table){
         ContentValues contentValues= new ContentValues();
         contentValues.put(Name, txt);
         SQLiteDatabase database=getWritableDatabase();
@@ -40,7 +41,8 @@ public class DBHelper extends SQLiteOpenHelper {
         database.insert(Table, null, contentValues);
         database.close();
     }
-    public  void delete(String txt){
+
+    public  void delete(String txt, String Table){
         //удаление элемента с таким-то именем
 //        SQLiteDatabase database=getWritableDatabase();
 ////       // txt="'"+txt+"'";//без этого не работает
@@ -79,6 +81,25 @@ public class DBHelper extends SQLiteOpenHelper {
         Collections.reverse(purch);
         database.close();
         return purch;
+    }
+
+    public ArrayList<String> OnLoad2(){
+        ArrayList<String> purch_done = new ArrayList();
+        final SQLiteDatabase database=getWritableDatabase();
+        Cursor cursor= database.query(DBHelper.Table2, null,null,null,null,null,null);
+        if (cursor.moveToFirst()){
+            int nameIndex = cursor.getColumnIndex(DBHelper.Name);
+            int idIndex = cursor.getColumnIndex(DBHelper.ID);
+            do{
+                purch_done.add(cursor.getString(nameIndex)); //проходит построчно и добавляет новые покупки
+                System.out.println(cursor.getString(idIndex)+ " " + cursor.getString(nameIndex));
+            } while(cursor.moveToNext());
+        }
+        else {
+            Log.d("mLog","0"); //если ничего нет в консоль пишет 0
+        }
+        database.close();
+        return purch_done;
     }
 }
 
