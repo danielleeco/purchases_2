@@ -30,10 +30,20 @@ public class Main2Activity extends AppCompatActivity {
             }
         });
         btn.getBackground().setAlpha(0);
+
         ImageButton share = findViewById(R.id.share);
         share.getBackground().setAlpha(0);
+
         ImageButton profile = findViewById(R.id.profile);
         profile.getBackground().setAlpha(0);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Main2Activity.this, Profile.class);
+                startActivity(i);
+            }
+        });
+
         ImageButton setup = findViewById(R.id.setup);
         setup.getBackground().setAlpha(0);
     }
