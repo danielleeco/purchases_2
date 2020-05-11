@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/dialog_set_name"
+        android:layout_width="280dp"
+        android:layout_height="157dp"
+        android:background="#00000000"
+        />
+    <TextView
+        android:id="@+id/enter_name"
+        android:layout_width="176dp"
+        android:layout_height="wrap_content"
+        android:text="Enter your name"
+        android:textSize="20sp"
+        android:textColor="#DE57A5BD"
+        android:layout_marginStart="17dp"
+        />
+
+
+    <EditText
+        android:id="@+id/set_name"
+        android:layout_height="66.52dp"
+        android:layout_width="203dp"
+        android:layout_below="@+id/enter_name"
+        android:hint="Your name"
+        android:gravity="top"
+        android:lineSpacingExtra="5sp"
+        android:translationY="-2.62sp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="14dp"
+        android:textColor="#8A5F5D5D"
+        android:background="@android:color/transparent"
+        />
+    <Button
+        android:id="@+id/apply_name"
+        android:layout_width="74dp"
+        android:layout_height="25.05dp"
+        android:background="#00000000"
+        android:text="Apply"
+        android:layout_below="@+id/set_name"
+        android:layout_marginStart="175dp"
+        android:layout_marginTop="10dp"
+        android:textAppearance="@style/apply_name"
+        />
+
+
+</RelativeLayout>

@@ -26,13 +26,30 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="15dp"
         android:layout_below="@+id/text"
-        android:layout_marginBottom="250dp"
+        android:layout_marginBottom="300dp"
         android:background="@color/white"
-        android:choiceMode="multipleChoice" />
+        android:choiceMode="multipleChoice"
+        />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"
+        android:background="#BADDE8"
+        android:layout_marginTop="535dp"
+       />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Already bought"
+        android:textSize="24sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="500dp"
+        android:textColor="#68B2C8"
+        />
 
     <ListView
         android:id="@+id/listview_done"
-        android:background="@color/grey"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="20dp"

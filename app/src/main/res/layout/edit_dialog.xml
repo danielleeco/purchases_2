@@ -6,45 +6,55 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="280dp"
+        android:layout_height="157dp"
         android:orientation="horizontal"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp">
 
         <TextView
             android:id="@+id/heading"
+            android:layout_width="176dp"
+            android:layout_height="wrap_content"
             android:text="Editing"
-            android:layout_width="250dp"
-            android:layout_height="50dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="1dp" />
+            android:textSize="20sp"
+            android:textColor="#DE57A5BD"
+            android:layout_marginStart="17dp" />
 
         <EditText
             android:id="@+id/edit_text"
-            android:layout_height="180dp"
-            android:layout_width="250dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="64dp"
-            android:hint="@string/write_here"
+            android:layout_height="66.52dp"
+            android:layout_width="203dp"
+            android:layout_below="@+id/heading"
+            android:gravity="top"
+            android:lineSpacingExtra="5sp"
+            android:translationY="-2.62sp"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="14dp"
+            android:textColor="#8A5F5D5D"
             android:background="@android:color/transparent" />
 
         <Button
-        android:id="@+id/dialog_done"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@android:color/transparent"
-        android:text="Done"
+            android:id="@+id/dialog_done"
+            android:layout_width="74dp"
+            android:layout_height="25.05dp"
+            android:background="#00000000"
+            android:text="Apply"
+            android:layout_below="@+id/edit_text"
+            android:layout_marginStart="175dp"
+            android:layout_marginTop="10dp"
+            android:textAppearance="@style/apply_name"
         />
         <Button
-        android:id="@+id/dialog_del"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:background="@android:color/transparent"
-        android:text="Delete"
+            android:id="@+id/dialog_del"
+            android:layout_width="74dp"
+            android:layout_height="25.05dp"
+            android:background="#00000000"
+            android:layout_below="@+id/edit_text"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:textAppearance="@style/apply_name"
+            android:text="Delete"
         />
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

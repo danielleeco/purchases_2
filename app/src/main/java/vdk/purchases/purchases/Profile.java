@@ -1,10 +1,8 @@
 package vdk.purchases.purchases;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -14,8 +12,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import org.w3c.dom.Text;
 
 public class Profile extends AppCompatActivity {
 
@@ -32,10 +28,10 @@ public class Profile extends AppCompatActivity {
         w.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         final Dialog dialog = new Dialog(Profile.this);
 
-        dialog.setContentView(R.layout.edit_dialog);
+        dialog.setContentView(R.layout.dialog_set_name);
 
-        final EditText edit_text = (EditText) dialog.findViewById(R.id.edit_text);
-        final Button dialog_done = (Button) dialog.findViewById(R.id.dialog_done);
+        final EditText set_name = (EditText) dialog.findViewById(R.id.set_name);
+        final Button apply_name = (Button) dialog.findViewById(R.id.apply_name);
 
         final TextView name = (TextView) findViewById(R.id.profile_name);
 
@@ -46,10 +42,10 @@ public class Profile extends AppCompatActivity {
                  System.out.println(name.getText());
                  dialog.show();
                  final String name_to_edit = name.getText().toString();
-                 edit_text.setText(name_to_edit);
-                 dialog_done.setOnClickListener(new View.OnClickListener() {
+                 set_name.setText(name_to_edit);
+                 apply_name.setOnClickListener(new View.OnClickListener() {
                      public void onClick(View v) {
-                         name.setText(edit_text.getText().toString());
+                         name.setText(set_name.getText().toString());
                          dialog.cancel();
                      }
                  });

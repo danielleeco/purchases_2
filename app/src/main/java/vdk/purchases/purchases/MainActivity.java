@@ -3,6 +3,7 @@ package vdk.purchases.purchases;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -43,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
 
         final Dialog dialog = new Dialog(MainActivity.this);
 
-        dialog.setTitle("Editing");
         dialog.setContentView(R.layout.edit_dialog);
         TextView heading = (TextView) dialog.findViewById(R.id.heading);
         //heading.setText("You can edit here");
@@ -79,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         //
         listView_done.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
+
         //адаптер для связи элементов списков с источниками данных
         final ArrayAdapter adapter = new ArrayAdapter<>(
                 this,
@@ -93,7 +94,8 @@ public class MainActivity extends AppCompatActivity {
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view =super.getView(position, convertView, parent);
                 TextView textView=(TextView) view.findViewById(android.R.id.text1);
-                textView.setTextColor(Color.LTGRAY);
+                textView.setTextColor(Color.parseColor("#66A4B7"));
+                //textView.setTypeface(null, Typeface.BOLD);
                 return view;
             }
         };
@@ -228,6 +230,7 @@ public class MainActivity extends AppCompatActivity {
                 }
         });
          */
+
 
     }
 }

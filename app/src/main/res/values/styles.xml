@@ -13,4 +13,10 @@
         <item name="android:textColor">#206277</item>
     </style>
 
+    <style name="apply_name">
+        <item name="android:textSize">18sp</item>
+        <item name="android:letterSpacing">0.04</item>
+        <item name="android:textColor">#2999BC</item>
+    </style>
+
 </resources>
