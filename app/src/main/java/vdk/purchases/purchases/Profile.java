@@ -62,5 +62,13 @@ public class Profile extends AppCompatActivity {
                  startActivityForResult(new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI), GET_FROM_GALLERY);
              }
          });
+        final Button sign_out_button = (Button) findViewById(R.id.sign_out);
+        sign_out_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Profile.this, EmailPasswordActivity.class);
+                startActivity(i);
+            }
+        });
     }
 }

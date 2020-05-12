@@ -46,5 +46,12 @@ public class Main2Activity extends AppCompatActivity {
 
         ImageButton setup = findViewById(R.id.setup);
         setup.getBackground().setAlpha(0);
+        setup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Main2Activity.this, Settings.class);
+                startActivity(i);
+            }
+        });
     }
 }
