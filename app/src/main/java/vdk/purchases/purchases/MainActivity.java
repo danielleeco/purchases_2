@@ -2,6 +2,7 @@ package vdk.purchases.purchases;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
@@ -25,6 +26,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> purch_done = new ArrayList();
 
     DBHelper dbHelper;
+    private FirebaseAuth mAuth;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         dialog.setContentView(R.layout.edit_dialog);
         TextView heading = (TextView) dialog.findViewById(R.id.heading);
         //heading.setText("You can edit here");
+
         final EditText edit_text = (EditText) dialog.findViewById(R.id.edit_text);
         final Button dialog_done = (Button) dialog.findViewById(R.id.dialog_done);
         final Button dialog_del = (Button) dialog.findViewById(R.id.dialog_del);
@@ -184,6 +189,7 @@ public class MainActivity extends AppCompatActivity {
         final Animation animRotate = AnimationUtils.loadAnimation(this, R.anim.rotate);
 
         ImageButton add = findViewById(R.id.addPurchase);
+        add.getBackground().setAlpha(0);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -231,6 +237,26 @@ public class MainActivity extends AppCompatActivity {
         });
          */
 
+        // dark theme
+        SharedPreferences sPref = getSharedPreferences(getString(R.string.shared_pref), Context.MODE_PRIVATE);
+        Boolean saved_state = sPref.getBoolean(getString(R.string.switch_loc), false);
+        System.out.println(saved_state);
+        TextView shop_list_name = findViewById(R.id.shop_list_name);
+        TextView total = findViewById(R.id.total);
+        TextView bought = findViewById(R.id.bought);
+
+        if(saved_state) {
+            findViewById(R.id.imageView).setBackgroundColor(Color.parseColor("#34484E"));
+            findViewById(R.id.list_v_color).setBackgroundColor(Color.parseColor("#34484E"));
+            findViewById(R.id.shop_list_name).setBackgroundColor(Color.parseColor("#34484E"));
+            findViewById(R.id.total).setBackgroundColor(Color.parseColor("#34484E"));
+            findViewById(R.id.listview_done).setBackgroundColor(Color.parseColor("#34484E"));
+            total.setTextColor(Color.parseColor("#5F737A"));
+            bought.setTextColor(Color.parseColor("#5F737A"));
+            findViewById(R.id.relativelayout).setBackgroundColor(Color.parseColor("#302F2F"));
+            shop_list_name.setTextColor(Color.parseColor("#5F737A"));
+
+        }
 
     }
 }

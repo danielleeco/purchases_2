@@ -3,25 +3,25 @@
 
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/relativelayout"
+    android:id="@+id/activity_list_products"
     android:clickable="true"
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@color/white">
+    tools:context="vdk.purchases.purchases.ListProducts"
+    android:background="@color/white"
+    >
 
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="144dp"
-        android:background="#8DA8B4"
-        />
+        android:layout_height="80dp"
+        android:background="@color/white" />
 
     <ListView
-        android:id="@+id/listview"
+        android:id="@+id/products"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="20dp"
@@ -33,35 +33,24 @@
         />
 
     <View
-        android:id="@+id/ppl"
         android:layout_width="wrap_content"
         android:layout_height="15dp"
-        android:background="#8DA8B4"
+        android:background="#BADDE8"
         android:layout_marginTop="535dp"
         />
 
     <TextView
-        android:id="@+id/bought"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Already bought"
         android:textSize="24sp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="500dp"
-        android:textColor="#8DA8B4"
-        />
-
-    <View
-        android:id="@+id/list_v_color"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#8DA8B4"
-        android:layout_marginTop="535dp"
-        android:layout_above="@+id/total"
+        android:textColor="#68B2C8"
         />
 
     <ListView
-        android:id="@+id/listview_done"
+        android:id="@+id/products_done"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="20dp"
@@ -69,7 +58,6 @@
         android:layout_marginTop="550dp"
         android:layout_above="@+id/total"
         android:layout_marginBottom="0dp"
-        android:background="#8DA8B4"
         android:choiceMode="multipleChoice" />
 
 
@@ -78,18 +66,20 @@
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginEnd="15dp"
-        android:layout_marginTop="64dp"
+        android:layout_below="@id/imageView"
         android:layout_alignParentEnd="true"
         android:src="@drawable/plus_32"
         android:background="@color/white" />
 
     <EditText
         android:id="@+id/text"
+
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="33dp"
         android:layout_marginEnd="20dp"
         android:layout_below="@+id/imageView"
+        android:layout_marginTop="64dp"
         android:hint="@string/write_here"
         android:lineSpacingExtra="0dp"
         android:background="@android:color/transparent"
@@ -97,26 +87,24 @@
 
     <TextView
         android:id="@+id/shop_list_name"
-        android:layout_width="240dp"
+        android:layout_width="match_parent"
         android:layout_height="64dp"
-        android:layout_marginTop="64dp"
         android:layout_marginStart="33dp"
-        android:background="#8DA8B4"
-        android:textColor="@color/white"
         android:layout_marginEnd="20dp"
+        android:layout_below="@id/imageView"
         android:gravity="bottom"
         android:text="@string/shopping_list"
         android:textSize="30sp"/>
 
     <TextView
         android:id="@+id/total"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:text="@string/left_to_buy"
         android:textSize="23sp"
         android:gravity="center"
-        android:background="#8DA8B4"
-        android:textColor="@color/white"
         android:layout_alignParentBottom="true"/>
 
 

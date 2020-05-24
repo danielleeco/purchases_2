@@ -14,12 +14,12 @@
 
     <TextView
         android:id="@+id/your_custom"
-        android:layout_width="258dp"
+        android:layout_width="168dp"
         android:layout_height="33dp"
-        android:text="Your custom design"
+        android:text="Your settings"
         android:textColor="@color/white"
         android:layout_alignBottom="@+id/rect_set"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="12dp"
         android:layout_centerHorizontal="true"
         android:textSize="28sp"
         />
@@ -33,7 +33,7 @@
         android:layout_marginStart="70dp"
         android:layout_marginTop="20dp"
         android:textSize="20dp"
-        android:textColor="#91D0E4"
+        android:textColor="#8DA8B4"
         />
 
     <Switch

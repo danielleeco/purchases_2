@@ -2,6 +2,7 @@ package vdk.purchases.purchases;
 
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 
@@ -28,10 +29,13 @@ public class EmailPasswordActivity extends AppCompatActivity implements View.OnC
 
     private EditText ETemail;
     private EditText ETpassword;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.signin);
 
         //InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
@@ -45,6 +49,8 @@ public class EmailPasswordActivity extends AppCompatActivity implements View.OnC
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
+                    Intent intent = new Intent(EmailPasswordActivity.this,ListProducts.class);
+                    startActivity(intent);
 
                 } else {
                     // User is signed out
@@ -57,8 +63,16 @@ public class EmailPasswordActivity extends AppCompatActivity implements View.OnC
         ETemail = (EditText) findViewById(R.id.email);
         ETpassword = (EditText) findViewById(R.id.password);
 
+
         findViewById(R.id.btn_sign_in).setOnClickListener(this);
         findViewById(R.id.sign_up).setOnClickListener(this);
+
+        //переходим сразу во вторую активность, если пользователь уже проходил авторизацию
+        FirebaseUser user = mAuth.getCurrentUser();
+        if(user != null) {
+            Intent intent = new Intent(EmailPasswordActivity.this, ListProducts.class);
+            startActivity(intent);
+        }
     }
 //обработка кнопок регистарции и авторизации
     @Override
@@ -82,7 +96,7 @@ public class EmailPasswordActivity extends AppCompatActivity implements View.OnC
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
                     Toast.makeText(EmailPasswordActivity.this, "Aвторизация успешна", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(EmailPasswordActivity.this, Main2Activity.class);
+                    Intent i = new Intent(EmailPasswordActivity.this, ListProducts.class);
                     startActivity(i);
                 }else
                     Toast.makeText(EmailPasswordActivity.this, "Aвторизация провалена", Toast.LENGTH_SHORT).show();

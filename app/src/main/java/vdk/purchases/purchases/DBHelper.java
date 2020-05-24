@@ -16,6 +16,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String Database_name="new_db"; //имя дб
     public static final String Table = "table_purch";
     public static final String Table2 = "table_purch2"; //название таблицы с именами
+    public static final String Table3 = "profile"; //название таблицы с именами
     public static final String ID="_id"; //столбец id таблицы table_purch
     public static final String Name="name";//столбец name таблицы table_purch
 
@@ -27,6 +28,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table " + Table + "(" + ID + " integer primary key," + Name + " text" + ")");
         db.execSQL("create table " + Table2 + "(" + ID + " integer primary key," + Name + " text" + ")"); //при создании бд создается талица
+        db.execSQL("create table " + Table3 + "(" + ID + " integer primary key," + Name + " text" + ")");
     }
 
     @Override

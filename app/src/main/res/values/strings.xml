@@ -6,6 +6,8 @@
     <string name="shopping_list">  Shopping List</string>
     <string name="write_here">   Write here</string>
     <string name="left_to_buy">left to buy:</string>
+    <string name="shared_pref"></string>
+    <string name="switch_loc"></string>
     <string-array name="purchases">
         <item>"Авокадо"</item>
         <item>"Бананы"</item>

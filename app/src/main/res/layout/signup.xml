@@ -101,7 +101,8 @@
         android:layout_height="51dp"
         android:layout_below="@+id/text_passwd"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/emailpassw" />
+        android:background="@drawable/emailpassw"
+        />
 
     <TextView
         android:id="@+id/text_confpasswd"
@@ -132,7 +133,8 @@
         android:layout_height="51dp"
         android:layout_below="@+id/text_confpasswd"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/emailpassw" />
+        android:background="@drawable/emailpassw"
+        />
 
     <Button
         android:id="@+id/btn_sign_up"

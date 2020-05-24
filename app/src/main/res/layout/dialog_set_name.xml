@@ -9,13 +9,15 @@
         android:layout_height="157dp"
         android:background="#00000000"
         />
+
     <TextView
         android:id="@+id/enter_name"
         android:layout_width="176dp"
         android:layout_height="wrap_content"
         android:text="Enter your name"
         android:textSize="20sp"
-        android:textColor="#DE57A5BD"
+        android:textColor="#8DA8B4"
+        android:layout_marginTop="15dp"
         android:layout_marginStart="17dp"
         />
 
@@ -34,6 +36,7 @@
         android:textColor="#8A5F5D5D"
         android:background="@android:color/transparent"
         />
+
     <Button
         android:id="@+id/apply_name"
         android:layout_width="74dp"
@@ -42,7 +45,7 @@
         android:text="Apply"
         android:layout_below="@+id/set_name"
         android:layout_marginStart="175dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:textAppearance="@style/apply_name"
         />
 

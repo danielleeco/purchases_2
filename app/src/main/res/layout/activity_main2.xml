@@ -7,7 +7,7 @@
     tools:context=".Main2Activity">
 
     <ImageView
-        android:src="@drawable/activity2"
+        android:src="@drawable/activity2_21"
         android:id="@+id/im1"
         android:scaleType="fitXY"
         android:layout_height="match_parent"

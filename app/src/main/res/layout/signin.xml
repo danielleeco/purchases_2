@@ -107,7 +107,9 @@
         android:layout_below="@+id/text_passwd"
         android:layout_centerHorizontal="true"
         android:background="@drawable/emailpassw"
+
         />
+
 
     <Button
         android:id="@+id/btn_sign_in"
