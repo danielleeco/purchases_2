@@ -53,7 +53,7 @@ public class Profile extends AppCompatActivity {
         final View name_1 = findViewById(R.id.name);
         final TextView str_1 = findViewById(R.id.str_1);
         final TextView str_2 = findViewById(R.id.str_2);
-        //final Button gallery_button = (Button) findViewById(R.id.profile_pic);
+        final ImageView gallery_button =  findViewById(R.id.profile_pic);
         final TextView name = (TextView) findViewById(R.id.profile_name);
         final Button sign_out_button = (Button) findViewById(R.id.sign_out);
 
@@ -64,7 +64,7 @@ public class Profile extends AppCompatActivity {
             // profile screen
             profile_view.setBackgroundColor(Color.parseColor("#302F2F"));
             blue_view.setBackgroundColor(Color.parseColor("#34484E"));
-            //gallery_button.setBackgroundResource(R.drawable.profile_pic_2);
+            gallery_button.setBackgroundResource(R.drawable.profile_pic_2);
             name_1.setBackgroundResource(R.drawable.profile_rect_2_2);
             name.setTextColor(Color.parseColor("#5F737A"));
             sign_out_button.setBackgroundResource(R.drawable.exit_btn_2);
