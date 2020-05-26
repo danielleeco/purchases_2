@@ -63,8 +63,12 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         if(view.getId() == R.id.btn_sign_up) {
+            if(ETemailr.getText().length()==0 || ETpasswordr.getText().length()==0 || ETpassword2r.getText().length()==0){
+                Toast.makeText(Registration.this, "Enter email and password", Toast.LENGTH_SHORT).show();
+            }
+            else{
 
-            checking(ETpasswordr.getText().toString(), ETpassword2r.getText().toString());
+            checking(ETpasswordr.getText().toString(), ETpassword2r.getText().toString());}
 
         }
 
@@ -78,7 +82,7 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
             registration(ETemailr.getText().toString(), ETpasswordr.getText().toString());
         }
         else {
-            Toast.makeText(Registration.this, "НОРМАЛЬНО ВВОДИ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Registration.this, "Passwords don't match", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -89,9 +93,11 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
-                        Toast.makeText(Registration.this, "Регистрация успешна", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Registration.this, "Registration successful", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(Registration.this, EmailPasswordActivity.class);
+                        startActivity(i);
                     } else
-                        Toast.makeText(Registration.this, "Регистрация провалена", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Registration.this, "Registration failed", Toast.LENGTH_SHORT).show();
                 }
             });
 

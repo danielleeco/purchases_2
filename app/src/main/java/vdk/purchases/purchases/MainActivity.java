@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view =super.getView(position, convertView, parent);
                 TextView textView=(TextView) view.findViewById(android.R.id.text1);
-                textView.setTextColor(Color.parseColor("#66A4B7"));
+                textView.setTextColor(Color.parseColor("#FFFFFF"));
                 //textView.setTypeface(null, Typeface.BOLD);
                 return view;
             }

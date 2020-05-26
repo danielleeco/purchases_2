@@ -31,14 +31,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/button" />
 
-    <ImageButton
-        android:id="@+id/profile"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/profile_64"
-        android:textColor="@color/colorAccent"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/share" />
+
 
     <ImageButton
         android:id="@+id/setup"
@@ -47,11 +40,11 @@
         android:src="@drawable/setup_64"
         android:textColor="@color/colorAccent"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/profile" />
+        android:layout_below="@id/share" />
 
     <TextView
         android:id="@+id/textView"
-        android:text="Choose your list"
+        android:text="Menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="90dp"

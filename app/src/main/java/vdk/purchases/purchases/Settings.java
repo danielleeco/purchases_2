@@ -50,7 +50,7 @@ public class Settings extends AppCompatActivity {
         final View name = findViewById(R.id.name);
         final TextView profile_name = findViewById(R.id.profile_name);
         final Button sign_out = findViewById(R.id.sign_out);
-        final TextView str_1 = findViewById(R.id.str_1);
+        final TextView str_1 = findViewById(R.id.email);
         final TextView str_2 = findViewById(R.id.str_2);
 
 

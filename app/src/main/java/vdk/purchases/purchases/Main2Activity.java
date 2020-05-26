@@ -58,7 +58,7 @@ public class Main2Activity extends AppCompatActivity {
         });
         share.getBackground().setAlpha(0);
 
-        ImageButton profile = findViewById(R.id.profile);
+        /*ImageButton profile = findViewById(R.id.profile);
         profile.getBackground().setAlpha(0);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +66,7 @@ public class Main2Activity extends AppCompatActivity {
                 Intent i = new Intent(Main2Activity.this, Profile.class);
                 startActivity(i);
             }
-        });
+        });*/
 
         ImageButton setup = findViewById(R.id.setup);
         setup.getBackground().setAlpha(0);

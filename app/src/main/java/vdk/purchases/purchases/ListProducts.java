@@ -1,6 +1,7 @@
 package vdk.purchases.purchases;
 
 
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
@@ -39,6 +40,7 @@ public class ListProducts extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference myRef;
 
+
     FirebaseUser user = mAuth.getInstance().getCurrentUser();
     ArrayList<String> arrayList=new ArrayList<> ();
     ArrayAdapter<String> arrayAdapter;
@@ -58,6 +60,18 @@ public class ListProducts extends AppCompatActivity {
         ListUserProducts = (ListView) findViewById(R.id.products);
         arrayAdapter=new ArrayAdapter<String> (this,android.R.layout.simple_list_item_1,arrayList);
         ListUserProducts.setAdapter (arrayAdapter);
+
+/////////////////////////////////////////////////////
+        final Dialog dialog = new Dialog(ListProducts.this);
+
+        dialog.setContentView(R.layout.edit_dialog);
+        TextView heading = (TextView) dialog.findViewById(R.id.heading);
+
+        final EditText edit_text = (EditText) dialog.findViewById(R.id.edit_text);
+        final Button dialog_done = (Button) dialog.findViewById(R.id.dialog_done);
+        final Button dialog_del = (Button) dialog.findViewById(R.id.dialog_del);
+
+///////////////////////////////////////////////////////////
         myRef.addValueEventListener (new ValueEventListener () {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
