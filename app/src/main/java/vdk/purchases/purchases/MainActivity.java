@@ -52,6 +52,18 @@ public class MainActivity extends AppCompatActivity {
         TextView heading = (TextView) dialog.findViewById(R.id.heading);
         //heading.setText("You can edit here");
 
+        SharedPreferences sPref = getSharedPreferences(getString(R.string.shared_pref), Context.MODE_PRIVATE);
+        Boolean saved_state = sPref.getBoolean(getString(R.string.switch_loc), false);
+
+
+        if (saved_state){
+            dialog.setContentView(R.layout.edit_dialog_dark);
+        }
+
+        if (!saved_state){
+            dialog.setContentView(R.layout.edit_dialog);
+        }
+
         final EditText edit_text = (EditText) dialog.findViewById(R.id.edit_text);
         final Button dialog_done = (Button) dialog.findViewById(R.id.dialog_done);
         final Button dialog_del = (Button) dialog.findViewById(R.id.dialog_del);
@@ -238,8 +250,6 @@ public class MainActivity extends AppCompatActivity {
          */
 
         // dark theme
-        SharedPreferences sPref = getSharedPreferences(getString(R.string.shared_pref), Context.MODE_PRIVATE);
-        Boolean saved_state = sPref.getBoolean(getString(R.string.switch_loc), false);
         System.out.println(saved_state);
         TextView shop_list_name = findViewById(R.id.shop_list_name);
         TextView total = findViewById(R.id.total);

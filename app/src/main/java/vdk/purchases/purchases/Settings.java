@@ -23,6 +23,8 @@ public class Settings extends AppCompatActivity {
     TextView your_custom;
     TextView dark_theme;
 
+    // checking
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
